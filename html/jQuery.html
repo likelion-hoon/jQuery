@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+	<script>
+		// 함수 프로그래밍 방식
+		// 모든 문서가 끝난 다음에 실행된다.
+		$(document).ready(function() {
+			alert('hello jQuery');
+			document.getElementById("txt").value = 'test~~~';
+			$("#txt").val('test^^^');
+			$("#msg").css("color", "green");
+			$("#msg").css("background", "pink");
+			$(".test").css("color","green"); 
+			$("#msg").html("<img width=200 src=강민.png>"); 
+			alert('');
+			$("#msg").show(); 
+			
+
+			$("div").css("color", "blue");
+			$(".test").css("color", "green");
+			$("div.test").css("fontSize", 30);
+
+			$("#msg").click(function() {
+				alert('주의!');
+				
+			});
+
+			$("#btn").click(function() {
+				$("#msg2").toggle();
+				$("#msg").show(); 
+			})
+
+		});
+	</script>
+
+	<div id="msg">hello</div>
+	<div id="msg2">hello2</div>
+	<div class="test">hello3</div>
+	<h1 class="test">Hello4</h1>
+
+	<input type="text" id="txt">
+	<button id="btn">Btn1</button>
+</body>
+</html>

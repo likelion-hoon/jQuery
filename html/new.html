@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<!--  JQuery CDN 추가 -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<meta charset="UTF-8">
+<title> you caught me </title>
+</head>
+<body>
+
+	<img id="pic" src="pink.png" width="200" height="200">
+	<br>
+
+	<button id="btn1" onclick="next()">next</button>
+	<script>
+	
+		var imgs = [ "pink.png", "red.png", "yeo.png", "black.png", "twice.png" ];
+		function next() {
+			pic.src = imgs[Math.floor(Math.random() * imgs.length)];
+			console.log(imgs[Math.floor(Math.random() * imgs.length)]);
+		};
+	</script>
+	
+
+</body>
+</html>

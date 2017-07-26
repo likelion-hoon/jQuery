@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<!--  JQuery CDN 추가 -->
+<script src="http://code.jquery.com/jquery.js"></script>
+<meta charset="UTF-8">
+<title>you know me</title>
+</head>
+<body>
+
+
+
+	<table>
+		<tr>
+			<td rowspan="2"><img id="pic" src="" width="200" height="200"></td>
+			<td><img id="circle" src="circle.png" width="50" height="50"></td>
+			<td id="num_circle">0</td>
+		</tr>
+		<tr>
+			<td><img id="wrong" src="wrong.png" width="50" height="50"></td>
+			<td id="num_wrong">0</td>
+		</tr>
+		<tr>
+			<td><button id="btn_reset">초기화</button></td>
+			<td><input id="txt1" type="text" size="5"></td>
+			<td><button id="btn_ans"">정답확인</button></td>
+		</tr>
+	</table>
+	<div id="msg">message</div>
+
+	<!-- <br>
+	<button id="btn_reset">초기화</button>
+	<input id="txt1" type="text">
+	<button id="btn_ans"">정답확인</button>
+	<div id="msg">message</div> -->
+
+	<script>
+		var circle_cnt = 0;
+		var wrong_cnt = 0;
+		// 현재문제
+		var index = 0;
+		// 문제순서
+		var idxs = [ 0, 1, 2, 3, 4 ];
+		//문제
+		var imgs = [ "라이언.png", "무지.png", "어피치.png", "재이지.png", "프로도.png" ];
+		// 정답
+		var corrects = [ "라이언", "무지", "어피치", "재이지", "프로도" ];
+		// 시작하면 자동으로 실행하는 함수 
+
+		function shuffle(a) {
+			// 순서 뒤섞기 
+			var j, x, i;
+			for (i = a.length; i; i--) {
+				j = Math.floor(Math.random() * i);
+				x = a[i - 1];
+				a[i - 1] = a[j];
+				a[j] = x;
+			}
+
+		}
+	</script>
+
+	<script>
+		shuffle(idxs); // [4,3,0,1,2]
+		// console.log(idxs);
+		index = idxs[0];
+		$("#pic").attr("src", imgs[idxs[index]]);
+		$("#btn_ans").click(function() {
+			
+			var i=0,j=0; 
+
+			console.log(index);
+
+			if ($("#txt1").val() == corrects[idxs[index]]) {
+				i++;
+				alert("정답!!");
+				index++;
+				index = index % 5; // 배열의 범위를 벗어 나는 것을 방지한다. 
+				$("#pic").attr("src", imgs[idxs[index]]);
+				$("#msg").html("good~~~!").css("color", "red");
+				$("#num_circle").text(i); 
+			} else {
+				alert("오답!! 다시 입력해주세요!");
+				$("#msg").html("bad~~~!").css("color", "blue");
+			}
+
+			$("#txt1").val(""); // html(),text()  
+			$("#txt1").focus();
+		});
+	</script>
+
+</body>
+</html>

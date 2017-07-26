@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<!--  JQuery CDN 추가 -->
+<script src="http://code.jquery.com/jquery.js"></script>
+<meta charset="UTF-8">
+<title>you know me</title>
+</head>
+<body>
+	<script>
+		// 현재문제
+		var index = 0;
+		// 문제순서
+		var idxs = [0, 1, 2, 3, 4];
+		//문제
+		var imgs = [ "라이언.png", "무지.png", "어피치.png", "재이지.png", "프로도.png" ];
+		// 정답
+		var corrects = [ "라이언", "무지", "어피치", "재이지", "프로도" ];
+		// 시작하면 자동으로 실행하는 함수 
+
+		function shuffle(a) {
+
+			var j, x, i;
+			for (i = a.length; i; i--) {
+				j = Math.floor(Math.random() * i);
+				x = a[i - 1];
+				a[i - 1] = a[j];
+				a[j] = x;
+			}
+
+		}
+
+		function answerConfirm() {
+		
+			console.log(index); 
+			
+       
+			if (txt1.value == corrects[idxs[index]]){
+				alert("정답!!");
+				index++; 
+				index = index % 5;  // 배열의 범위를 벗어 나는 것을 방지한다. 
+				pic.src = imgs[idxs[index]];
+				txt1.value = ""; 
+				txt1.focus(); 
+			} else {
+				alert("오답!! 다시 입력해주세요!");
+			}
+
+		}
+	</script>
+
+	<img id="pic" src=""  width="200" height="200">
+	<br>
+	<input id="txt1" type="text">
+	<div id="msg"> message </div>
+	<button id="btn1" onclick="answerConfirm()">정답확인</button>
+
+	<script>
+		shuffle(idxs); // [4,3,0,1,2]
+		msg.innerHTML = "<font color=red> good~~~ </font>"; 
+		console.log(idxs); 
+		index = idxs[0];
+		pic.src = imgs[idxs[index]];
+	</script>
+
+</body>
+</html>

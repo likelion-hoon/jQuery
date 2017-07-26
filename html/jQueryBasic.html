@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<title>jQueryBasic</title>
+</head>
+<body>
+	<script>
+		$(document).ready(function() {
+			$('input[data=hello]').val('Hello!'); 
+			$('input[data*=hello]').val('Hello2!'); 
+			$('input[data~=hello]').val('Hello3!'); 
+		});
+	</script>
+
+
+
+	<p id="msg">hello</p>
+
+	<script>
+		$("p").addClass("s1");
+
+		$("#msg").text("안녕하세요");
+	</script>
+</body>
+</html>

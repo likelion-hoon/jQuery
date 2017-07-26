@@ -1,0 +1,31 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<div id="msg"></div>
+<script>
+	var array = [ {
+		name : 'Hanbit Media',
+		link : 'http://hanb.co.kr'
+	}, {
+		name : 'Naver',
+		link : 'http://naver.com'
+	}, {
+		name : 'Daum',
+		link : 'http://daum.net'
+	}, {
+		name : 'Paran',
+		link : 'http://paran.com'
+	} ];
+
+	$.each(array, function(i, j) {
+
+		console.log(i); 
+	
+		var output = '';
+		output += '<a href="' + j.link + '">';
+		output += ' <h1>' + j.name + '</h1>';
+		output += '</a>';
+		
+		var str = $("#msg").html();
+		$("#msg").html(str+output); 
+	});
+</script>
+

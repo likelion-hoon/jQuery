@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<title>jQuery02</title>
+</head>
+<body>
+	<script>
+		$(document).ready(function() {
+			$('input[data=hello]').val('Hello!');
+			$('input[data*=hello]').val('Hello2!');
+			$('input[data~=hello]').val('Hello3!');
+		});
+
+		// 5초 후에 setTimeout함수가 실행된다. 
+		setTimeout(function() {
+			// '>'은 직계자식을 나타낸다. 
+			var value = $('select > option:selected').val();
+			alert(value);
+		}, 5000);
+	</script>
+
+	<!-- data 속성은 존재하는 것이 아니라 만든것  -->
+	<input type="text" data="hello" />
+	<input type="text" data="123hello123" />
+	<input type="text" data="123 hello 123" />
+
+	<select>
+		<option>Apple</option>
+		<option>Bag</option>
+		<option>Cat</option>
+		<option>Dog</option>
+		<option>Elephant</option>
+	</select>
+
+
+</body>
+</html>
