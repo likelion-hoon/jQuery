@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function add(a, b) {
+			return a + b;
+		}
+		function sub(a, b) {
+			return a - b;
+		}
+
+		var fun1 = sub; // C언어의 함수 포인터와 개념이 같다. 
+		// fun1은 sub의 주소를 갖는다.		
+		abc = function(a, b) { // abc는 변수, 익명함수 
+			return a + b;
+		}
+
+		var c = add(4, 6);
+		var d = sub(4, 6);
+		var e = abc(4, 6); // 속도는 똑같다. 
+		var f = fun1(10, 4);
+
+		var fun2 = add;
+		var g = fun1(10, 4);
+
+		var op = 1;
+		var op1 = 10;
+		var op2 = 90;
+
+		// 함수 포인터 관점 설명 
+		// 첫 번째 방식
+		if (op == 1)
+			console.log(add(op1, op2));
+		if (op == 2)
+			console.log(sub(op1, op2));
+
+		// 두 번째 방식
+		if (op == 1)
+			v = add(op1, op2);
+		if (op == 2)
+			v = sub(op1, op2);
+		console.log(v);
+
+		// 세 번째 방식(가장 권장하는 방식)
+		function fun(op, op1, op2) {
+			if (op == 1)
+				f = add;
+			if (op == 2)
+				f = sub;
+			if (op == 3)
+				f = mul;
+			if (op == 4)
+				f = div;
+
+			return f(op1, op2);
+
+		}
+		console.log(f(op1, op2));
+
+		var a = fun(1, 10, 10);
+		var b = fun(2, 10, 10);
+
+		f = power;
+		var c = fun(f, 0, 10);
+		function power(x) {
+			x = x * x;
+		}
+
+		// c=0이 된다. (사용자가 정의하여 사용할 수 있다.)
+		var c = fun(function(x, y) {
+			return x * y;
+		}, 0, 10);
+
+		function fun(f, op1, op2) {
+			return f(op1, op2); // 0 
+		}
+
+		function power(a) {
+			for (i = 0; i < a.length; i++) {
+				a[i] = a[i] * a[i];
+			}
+		}
+
+		function add10(a) {
+			for (i = 0; i < a.length; i++) {
+				a[i] = a[i] * 10;
+			}
+		}
+
+		function add2(a, offset) {
+			for (i = 0; i < a.length; i++) {
+				a[i] = a[i] * offset;
+			}
+		}
+		a = [ 10, 20, 30 ];
+		power(a);
+		add10(a);
+		add2(a, 30);
+
+		
+		fun(a, power); 
+		fun(a, add10); 
+		fun(a, function(i, x) { return x * x; });
+		
+		fun(a, x -> x*x); // 자바에서의 람다식  
+
+		fun(a, f)
+		{
+			for (i = 0; i < a.length; i++) {
+				a[i] = f(i, a[i]);
+			}
+		}
+
+		/* 
+		 3+4(중위)
+		 add(3,4)(전위)
+		 +(3,4)(전위)   
+		 */
+	</script>
+</body>
+</html>

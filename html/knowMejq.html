@@ -101,14 +101,14 @@
 		// 타이머 시작 함수 
 		function starttime() {
 			
-			sum = prompt("제한시간을 입력해주세요"); 
+			sum = 60; 
 	
 			timeId = setInterval(function() {
 				if (sum > 0) {
 					sum -= 1;
 					$("#time").html(sum);
 				} else {
-					$("#memo").text("시간이 초과되었습니다!");
+					alert("시간이 초과되었습니다!");
 					$("#memo").text(
 							"맞은문제 : " + i + "개, 틀린문제 : " + j + "개 , 남은문제 :"
 									+ (imgs.length - (i + j)) + "개 , 정답률 :" + i
